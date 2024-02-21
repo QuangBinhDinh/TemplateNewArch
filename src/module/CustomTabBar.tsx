@@ -1,9 +1,11 @@
 import { View, Text, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get('window');
 
 const CustomTabBar = ({ state, descriptors, navigation }) => {
+    const insets = useSafeAreaInsets();
     return (
-        <View style={styles.rowContainer}>
+        <View style={[styles.rowContainer]}>
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
                 const label =
@@ -38,10 +40,10 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
                     <TouchableOpacity
                         key={index}
                         style={styles.button}
-                        accessibilityRole="button"
-                        accessibilityState={isFocused ? { selected: true } : {}}
-                        accessibilityLabel={options.tabBarAccessibilityLabel}
-                        testID={options.tabBarTestID}
+                        // accessibilityRole="button"
+                        // accessibilityState={isFocused ? { selected: true } : {}}
+                        // accessibilityLabel={options.tabBarAccessibilityLabel}
+
                         onPress={onPress}
                     >
                         {options.tabBarIcon({ focused: isFocused })}
@@ -49,6 +51,8 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
                     </TouchableOpacity>
                 );
             })}
+
+            {/* <View style={{ width: SCREEN_WIDTH, height: insets.bottom / 2, backgroundColor: 'white' }} /> */}
         </View>
     );
 };

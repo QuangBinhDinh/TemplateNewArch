@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, TouchableOpacity, View } from 'react-native';
 import { navigate } from './service';
 import { Icon } from '@rneui/base';
 
@@ -8,7 +8,8 @@ const ThirdScreen = () => {
         <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
             <Text style={{ fontSize: 24, color: 'black' }}>This is the third screen</Text>
 
-            <Pressable
+            <TouchableOpacity
+                onPress={() => console.log('Press me')}
                 style={{
                     marginTop: 30,
                     width: 240,
@@ -19,7 +20,7 @@ const ThirdScreen = () => {
                 }}
             >
                 <Text style={{ fontSize: 16, color: 'white' }}>Button test</Text>
-            </Pressable>
+            </TouchableOpacity>
 
             <Icon size={30} type="feather" name="heart" />
         </View>

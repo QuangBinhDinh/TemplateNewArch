@@ -15,7 +15,14 @@ const SecondScreen = () => {
     const insets = useSafeAreaInsets();
 
     return (
-        <View style={{ flex: 1, backgroundColor: 'white', paddingTop: insets.top / 2 }}>
+        <View
+            style={{
+                flex: 1,
+                backgroundColor: 'white',
+                paddingTop: insets.top / 2,
+                paddingBottom: insets.bottom / 2,
+            }}
+        >
             <View
                 style={{ width: '100%', height: 60, flexDirection: 'row', borderBottomWidth: 1, alignItems: 'center' }}
             >
