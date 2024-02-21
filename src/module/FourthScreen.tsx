@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { navigate } from './service';
 import { Icon } from '@rneui/base';
-
+import { AppleIcon, GoogleIcon } from '@assets/svg';
 const FourthScreen = () => {
     return (
         <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
@@ -22,6 +22,10 @@ const FourthScreen = () => {
             </Pressable>
 
             <Icon size={30} type="feather" name="heart" />
+
+            <GoogleIcon width={30} height={30} style={{ marginTop: 20 }} />
+
+            <AppleIcon width={30} height={30} style={{ marginTop: 20 }} />
         </View>
     );
 };
