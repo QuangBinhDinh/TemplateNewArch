@@ -7,7 +7,7 @@ import SecondScreen from './module/SecondScreen';
 import { TransitionPresets } from '@react-navigation/stack';
 import { LogBox } from 'react-native';
 
-LogBox.ignoreAllLogs(true);
+LogBox.ignoreAllLogs();
 const Stack = createStackNavigator();
 
 const App = () => {

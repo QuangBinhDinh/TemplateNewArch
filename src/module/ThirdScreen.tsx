@@ -3,7 +3,7 @@ import { Pressable, Text, View } from 'react-native';
 import { navigate } from './service';
 import { Icon } from '@rneui/base';
 
-const FirstScreen = () => {
+const ThirdScreen = () => {
     return (
         <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
             <Text style={{ fontSize: 24, color: 'black' }}>This is the first screen</Text>
@@ -17,9 +17,8 @@ const FirstScreen = () => {
                     alignItems: 'center',
                     backgroundColor: '#ff7300',
                 }}
-                onPress={() => navigate('SecondScreen')}
             >
-                <Text style={{ fontSize: 16, color: 'white' }}>Navigate</Text>
+                <Text style={{ fontSize: 16, color: 'white' }}>Button test</Text>
             </Pressable>
 
             <Icon size={30} type="feather" name="heart" />
@@ -27,4 +26,4 @@ const FirstScreen = () => {
     );
 };
 
-export default FirstScreen;
+export default ThirdScreen;
