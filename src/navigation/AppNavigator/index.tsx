@@ -1,10 +1,8 @@
 import React from 'react';
-import { Icon } from '@rneui/base';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ThirdScreen from '../../module/ThirdScreen';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import FourthScreen from '../../module/FourthScreen';
 import CustomTabBar from './CustomTabBar';
+import { User, UserFill, Home, HomeFill } from '@assets/svg';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,14 +13,26 @@ const BottomTabs = () => {
             tabBar={props => <CustomTabBar {...props} />}
         >
             <Tab.Screen
-                options={{ title: 'Screen1', tabBarIcon: () => <Icon type="feather" name="home" size={20} /> }}
-                name="ThirdScreen"
+                options={{
+                    title: 'Home',
+                    tabBarIcon: ({ focused }) => {
+                        if (focused) return <HomeFill width={24} height={24} />;
+                        else return <Home width={24} height={24} />;
+                    },
+                }}
+                name="HomeScreen"
                 component={ThirdScreen}
             />
             <Tab.Screen
-                options={{ title: 'Screen2', tabBarIcon: () => <Icon type="feather" name="user" size={20} /> }}
-                name="FourthScreen"
-                component={FourthScreen}
+                options={{
+                    title: 'You',
+                    tabBarIcon: ({ focused }) => {
+                        if (focused) return <UserFill width={24} height={24} />;
+                        else return <User width={24} height={24} />;
+                    },
+                }}
+                name="UserScreen"
+                component={ThirdScreen}
             />
         </Tab.Navigator>
     );

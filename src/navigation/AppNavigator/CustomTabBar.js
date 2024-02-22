@@ -1,3 +1,5 @@
+import { TextNormal } from '@components/text';
+import { shadowTop } from '@styles/shadow';
 import { View, Text, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -5,54 +7,57 @@ const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get('window');
 const CustomTabBar = ({ state, descriptors, navigation }) => {
     const insets = useSafeAreaInsets();
     return (
-        <View style={[styles.rowContainer]}>
-            {state.routes.map((route, index) => {
-                const { options } = descriptors[route.key];
-                const label =
-                    options.tabBarLabel !== undefined
-                        ? options.tabBarLabel
-                        : options.title !== undefined
-                        ? options.title
-                        : route.name;
+        <View>
+            <View style={[styles.rowContainer, shadowTop]}>
+                {state.routes.map((route, index) => {
+                    const { options } = descriptors[route.key];
+                    const label =
+                        options.tabBarLabel !== undefined
+                            ? options.tabBarLabel
+                            : options.title !== undefined
+                            ? options.title
+                            : route.name;
 
-                const isFocused = state.index === index;
+                    const isFocused = state.index === index;
 
-                const onPress = () => {
-                    const event = navigation.emit({
-                        type: 'tabPress',
-                        target: route.key,
-                        canPreventDefault: true,
-                    });
+                    const onPress = () => {
+                        const event = navigation.emit({
+                            type: 'tabPress',
+                            target: route.key,
+                            canPreventDefault: true,
+                        });
 
-                    if (!isFocused && !event.defaultPrevented) {
-                        navigation.navigate(route.name, route.params);
-                    }
-                };
+                        if (!isFocused && !event.defaultPrevented) {
+                            navigation.navigate(route.name, route.params);
+                        }
+                    };
 
-                const onLongPress = () => {
-                    navigation.emit({
-                        type: 'tabLongPress',
-                        target: route.key,
-                    });
-                };
+                    const onLongPress = () => {
+                        navigation.emit({
+                            type: 'tabLongPress',
+                            target: route.key,
+                        });
+                    };
 
-                return (
-                    <TouchableOpacity
-                        key={index}
-                        style={styles.button}
-                        // accessibilityRole="button"
-                        // accessibilityState={isFocused ? { selected: true } : {}}
-                        // accessibilityLabel={options.tabBarAccessibilityLabel}
+                    return (
+                        <TouchableOpacity
+                            key={index}
+                            style={styles.button}
+                            // accessibilityRole="button"
+                            // accessibilityState={isFocused ? { selected: true } : {}}
+                            // accessibilityLabel={options.tabBarAccessibilityLabel}
 
-                        onPress={onPress}
-                    >
-                        {options.tabBarIcon({ focused: isFocused })}
-                        <Text style={[styles.label, { color: isFocused ? '#ff7300' : 'black' }]}>{label}</Text>
-                    </TouchableOpacity>
-                );
-            })}
-
-            {/* <View style={{ width: SCREEN_WIDTH, height: insets.bottom / 2, backgroundColor: 'white' }} /> */}
+                            onPress={onPress}
+                        >
+                            {options.tabBarIcon({ focused: isFocused })}
+                            <TextNormal style={[styles.label, { color: isFocused ? '#ff7300' : 'black' }]}>
+                                {label}
+                            </TextNormal>
+                        </TouchableOpacity>
+                    );
+                })}
+            </View>
+            <View style={{ width: SCREEN_WIDTH, height: insets.bottom / 2, backgroundColor: 'white' }} />
         </View>
     );
 };
