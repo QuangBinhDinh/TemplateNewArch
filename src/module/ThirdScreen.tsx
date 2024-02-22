@@ -52,7 +52,7 @@ const ThirdScreen = () => {
             <Text style={{ fontSize: 24, color: 'black', marginTop: 40 }}>This is the third screen</Text>
 
             <AnimatedButton onPress={() => console.log('Press me')} style={[styles.mainButton, animStyle]}>
-                <Text style={{ fontSize: 16, color: 'white' }}>Animated Buton Test</Text>
+                <Text style={{ fontSize: 16, color: 'white', fontFamily: 'Poppins-Medium' }}>Animated Buton Test</Text>
             </AnimatedButton>
 
             <Icon size={30} type="feather" name="heart" />
