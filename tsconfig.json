@@ -12,12 +12,13 @@
     "strict": true,
     "target": "esnext",
     
-    // "baseUrl": "./src",
+   
     "paths": {
       "@navigation/*": ["./src/navigation/*"],
       "@components/*": ["./src/components/*"],
       "@components": ["./src/components"],
       "@assets/*": ["./src/assets/*"],
+      "@api": ["./src/api"], // this is for importing index file
       "@api/*": ["./src/api/*"],
       "@store/*": ["./src/store/*"],
       "@styles/*": ["./src/styles/*"],

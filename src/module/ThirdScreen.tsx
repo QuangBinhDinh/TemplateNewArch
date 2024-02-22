@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { navigate } from './service';
+import { navigate } from '../navigation/service';
 import { Icon } from '@rneui/base';
 import Animated, {
     runOnJS,

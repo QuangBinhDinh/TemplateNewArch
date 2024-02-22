@@ -1,28 +1,16 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { navigationRef } from './module/service';
-import FirstScreen from './module/FIrstScreen';
-import SecondScreen from './module/SecondScreen';
-import { TransitionPresets } from '@react-navigation/stack';
 import { LogBox } from 'react-native';
+import { Provider } from 'react-redux';
+import Store from '@store/store';
+import Router from './navigation';
 
 LogBox.ignoreAllLogs();
-const Stack = createStackNavigator();
 
 const App = () => {
     return (
-        <NavigationContainer ref={navigationRef}>
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false,
-                    ...TransitionPresets.SlideFromRightIOS,
-                }}
-            >
-                <Stack.Screen name="FirstScreen" component={FirstScreen} />
-                <Stack.Screen name="SecondScreen" component={SecondScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Provider store={Store}>
+            <Router></Router>
+        </Provider>
     );
 };
 

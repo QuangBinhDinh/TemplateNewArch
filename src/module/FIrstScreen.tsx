@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { navigate } from './service';
+import { navigate } from '../navigation/service';
 import { Icon } from '@rneui/base';
 
 const FirstScreen = () => {
