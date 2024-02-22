@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { axiosBaseQuery, APP_USER_AGENT } from '@api/base';
 
-const DOMAIN_URL = 'https://printerval.com';
+const DOMAIN_URL = 'https://printerval.com/';
 
 export const domainApi = createApi({
     reducerPath: 'domainApi',

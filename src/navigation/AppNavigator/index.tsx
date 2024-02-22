@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ThirdScreen from '../../module/ThirdScreen';
 import CustomTabBar from './CustomTabBar';
 import { User, UserFill, Home, HomeFill } from '@assets/svg';
+import HomeScreen from '../../module/home';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ const BottomTabs = () => {
                     },
                 }}
                 name="HomeScreen"
-                component={ThirdScreen}
+                component={HomeScreen}
             />
             <Tab.Screen
                 options={{

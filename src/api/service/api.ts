@@ -2,7 +2,7 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 
 import { axiosBaseQuery, APP_USER_AGENT } from '@api/base';
 
-const API_URL = 'https://api.printerval.com';
+const API_URL = 'https://api.printerval.com/';
 
 export const api = createApi({
     reducerPath: 'api',

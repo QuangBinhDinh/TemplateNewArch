@@ -18,7 +18,7 @@ const Router = () => {
                     ...TransitionPresets.SlideFromRightIOS,
                 }}
             >
-                <Stack.Screen name="HomeScreen" component={BottomTabs} />
+                <Stack.Screen name="App" component={BottomTabs} />
                 <Stack.Screen name="SecondScreen" component={SecondScreen} />
             </Stack.Navigator>
         </NavigationContainer>
