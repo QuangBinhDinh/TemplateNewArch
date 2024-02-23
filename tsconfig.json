@@ -29,6 +29,8 @@
       "@banner/*": ["./src/assets/banner/*"],
       "@image/*": ["./src/assets/image/*"],
       "@svg/*": ["./src/assets/svg/*"],
+      "@home/*": ["./src/module/home/*"],
+      "@searchResult/*": ["./src/module/searchResult/*"],
       
     }
 

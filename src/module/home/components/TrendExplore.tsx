@@ -8,6 +8,9 @@ import { ExploreTag, useFetchExploreTrendQuery } from '../service';
 import { useAppDispatch } from '@store/hook';
 import { lightColor } from '@styles/color';
 import ImageLoader from '@components/ImageLoader';
+import qs from 'query-string';
+import { domainApi } from '@api/service';
+import { navigate } from '@navigation/service';
 
 const API_URL = 'https://api.printerval.com/';
 
@@ -43,25 +46,25 @@ const TrendItem = ({ item }: { item: ExploreTag }) => {
         const match = url.match(urlPattern);
         const matchPage = url.match(pagePattern);
         const matchCategory = url.match(categoryPattern);
-        // if (!!match) {
-        //     const params = qs.parse(match[2]);
-        //     if (params.q) {
-        //         dispatch(domainApi.util.invalidateTags(['SearchResult']));
-        //         navigate('SearchResult', { ...params, title: params.q });
-        //     }
-        // } else if (matchPage) {
-        //     const slug: string = matchPage[2];
-        //     if (slug) {
-        //         navigate('LandingPage', { title: tag_name, slug: slug });
-        //     }
-        // } else if (matchCategory) {
-        //     const categorySlug = matchCategory[2].split('/').pop();
-        //     const response = await fetch(`${API_URL}category?filters=slug=${categorySlug}&metric=first&fields=id,name`)
-        //         .then(response => response.json())
-        //         .catch(err => console.error(err));
-        //     const category = response.result;
-        //     navigate('ProductCategory', { title: category.name, categoryId: category.id }, category.id);
-        // }
+        if (!!match) {
+            const params = qs.parse(match[2]);
+            if (params.q) {
+                dispatch(domainApi.util.invalidateTags(['SearchResult']));
+                navigate('SearchResult', { ...params, title: params.q });
+            }
+        } else if (matchPage) {
+            // const slug: string = matchPage[2];
+            // if (slug) {
+            //     navigate('LandingPage', { title: tag_name, slug: slug });
+            // }
+        } else if (matchCategory) {
+            const categorySlug = matchCategory[2].split('/').pop();
+            const response = await fetch(`${API_URL}category?filters=slug=${categorySlug}&metric=first&fields=id,name`)
+                .then(response => response.json())
+                .catch(err => console.error(err));
+            const category = response.result;
+            navigate('ProductCategory', { title: category.name, categoryId: category.id }, category.id);
+        }
     };
 
     return (

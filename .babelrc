@@ -34,7 +34,9 @@
             "@navigation": "./src/navigation",
             "@animation": "./src/assets/animation",
             "@image": "./src/assets/image",
-            "@svg": "./src/assets/svg"
+            "@svg": "./src/assets/svg",
+            "@home": "./src/module/home",
+            "@searchResult": "./src/module/searchResult"
           }
         }
       ]
