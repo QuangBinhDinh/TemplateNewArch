@@ -16,6 +16,7 @@ import { APP_USER_AGENT } from '@api/base';
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '@store/store';
 import { useSelector } from 'react-redux';
+import ImageLoader from '@components/ImageLoader';
 
 interface IProps {
     item: Product;
@@ -54,17 +55,7 @@ const DynamicCard = ({ item, style, isShowSeller = true, canAddWishlist = true }
                 </View>
             )}
 
-            <Image
-                style={styles.image}
-                source={{
-                    uri: cdnImageV2(item.image_url),
-                    headers: {
-                        'User-Agent': APP_USER_AGENT,
-                    },
-                    cache: 'force-cache',
-                }}
-                resizeMode="cover"
-            />
+            <ImageLoader style={styles.image} uri={cdnImageV2(item.image_url)} />
             {item.rating_value > 0 && (
                 <View style={styles.rating}>
                     <StarRating rating={item.rating_value} width={80} />

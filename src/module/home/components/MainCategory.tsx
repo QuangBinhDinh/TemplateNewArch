@@ -6,11 +6,14 @@ import { SCREEN_WIDTH } from '@util/index';
 import { navigate } from '@navigation/service';
 import { useAppDispatch } from '@store/hook';
 import { domainApi } from '@api/service';
+import { useFetchCategoryBannerQuery } from '../service';
+import { lightColor } from '@styles/color';
 
 const LARGE_WIDTH = (SCREEN_WIDTH - 44) / 2;
 const SMALL_HEIGHT = (LARGE_WIDTH - 12) / 2;
-const MainCategory = ({ data }: { data: any[] }) => {
-    if (!data) return null;
+const MainCategory = () => {
+    const { data: { result } = {} } = useFetchCategoryBannerQuery();
+    if (!result) return null;
     return (
         <View style={styles.container}>
             <TextSemiBold style={{ fontSize: 20, marginLeft: 16, marginBottom: 16, lineHeight: 28 }}>
@@ -18,28 +21,28 @@ const MainCategory = ({ data }: { data: any[] }) => {
             </TextSemiBold>
             <View style={styles.rowUp}>
                 <View style={styles.bigView}>
-                    <ImageCover item={data[0]} />
+                    <ImageCover item={result[0]} />
                 </View>
                 <View style={styles.bigView}>
                     <View style={styles.smallView}>
-                        <ImageCover item={data[1]} />
+                        <ImageCover item={result[1]} />
                     </View>
                     <View style={styles.smallView}>
-                        <ImageCover item={data[2]} />
+                        <ImageCover item={result[2]} />
                     </View>
                 </View>
             </View>
 
             <View style={styles.rowDown}>
                 <View style={styles.bigView}>
-                    <ImageCover item={data[3]} />
+                    <ImageCover item={result[3]} />
                 </View>
                 <View style={styles.bigView}>
                     <View style={styles.smallView}>
-                        <ImageCover item={data[4]} />
+                        <ImageCover item={result[4]} />
                     </View>
                     <View style={styles.smallView}>
-                        <ImageCover item={data[5]} />
+                        <ImageCover item={result[5]} />
                     </View>
                 </View>
             </View>
@@ -58,7 +61,7 @@ const ImageCover = ({ item }: { item: any }) => {
     return (
         <Pressable style={{ flex: 1 }} onPress={toSearchResult}>
             <Image
-                style={{ width: '100%', height: '100%' }}
+                style={{ width: '100%', height: '100%', backgroundColor: lightColor.graybg }}
                 resizeMode="cover"
                 source={{ uri: item.image_url, cache: 'force-cache' }}
             />
